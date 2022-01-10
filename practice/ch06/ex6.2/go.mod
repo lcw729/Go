@@ -1,3 +1,3 @@
-module ex6.2
+module ex6
 
 go 1.17
