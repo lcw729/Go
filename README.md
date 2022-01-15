@@ -1,4 +1,5 @@
-# Go
+# Go 
+✅ Go언어를 공부하면서 개인적으로 블로그에 정리한 내용입니다.
 
 6. [연산자](https://chaaaaewoncode.tistory.com/61)
 7. [함수](https://chaaaaewoncode.tistory.com/65)
