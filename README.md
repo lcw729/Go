@@ -9,4 +9,4 @@
 11. [for문](https://chaaaaewoncode.tistory.com/73)
 12. [array](https://chaaaaewoncode.tistory.com/74)
 13. [구조체](https://chaaaaewoncode.tistory.com/75)
-14. [포인터[(https://chaaaaewoncode.tistory.com/76)
+14. [포인터](https://chaaaaewoncode.tistory.com/76)
