@@ -7,3 +7,4 @@
 10. [switch](https://chaaaaewoncode.tistory.com/69)
 11. [for문](https://chaaaaewoncode.tistory.com/73)
 12. [array](https://chaaaaewoncode.tistory.com/74)
+13. [구조체](https://chaaaaewoncode.tistory.com/75)
