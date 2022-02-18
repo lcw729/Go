@@ -1,8 +1,6 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
 	"io/ioutil"
 	"net/http"
 	"time"
@@ -21,11 +19,11 @@ func main() {
 	user.FirstName = "chaewon"
 	user.LastName = "lee"
 	user.Email = "chaewon@gmail.com"
-	byte, _ := json.Marshal(user)
-	buff := bytes.NewBuffer(byte)
+	//byte, _ := json.Marshal(user)
+	//	buff := bytes.NewBuffer(byte)
 
 	// Request 객체 생성
-	req, err := http.NewRequest("POST", "http://10.0.5.86:3000/foo", buff)
+	req, err := http.NewRequest("GET", "http://localhost:3000/students", nil)
 	if err != nil {
 		panic(err)
 	}
