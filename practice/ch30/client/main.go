@@ -1,9 +1,10 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"encoding/json"
 )
 
 type Student struct {
@@ -13,11 +14,12 @@ type Student struct {
 	Score int
 }
 
-func main(){
-	student := Student{Id:0, Name:"ccc",Age:15,Score:78}
-	bytes, _ := json.Marshal(student)
-	req,err = http.NewRequest("POST","http://localhost:3000/students",bytes)
-	if err != nil{
+func main() {
+	student := Student{Id: 0, Name: "ccc", Age: 15, Score: 78}
+	jsonData, _ := json.Marshal(student)
+	buff := bytes.NewBuffer(jsonData)
+	req, err := http.NewRequest("POST", "http://localhost:3000/students", buff)
+	if err != nil {
 		panic(err)
 	}
 
@@ -31,8 +33,8 @@ func main(){
 	defer resp.Body.Close()
 
 	response, err := ioutil.ReadAll(resp.Body)
-	if err == nil{
-		str:= string(response)
+	if err == nil {
+		str := string(response)
 		println(str)
 	}
 }

@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"sort"
 	"strconv"
+
 	"github.com/gorilla/mux"
 )
 
@@ -26,7 +27,7 @@ func MakeWebHandler() http.Handler {
 	mux.HandleFunc("/students", PostStudentHandler).Methods("POST")
 	mux.HandleFunc("/students/{id:[0-9]+", DeleteStudentHandler).Methods("DELETE")
 
-	students := make(map[int]Student) // 임시 데이터 생성
+	students = map[int]Student{} // 임시 데이터 생성
 	students[1] = Student{1, "aaa", 16, 87}
 	students[2] = Student{2, "bbb", 18, 98}
 	fmt.Println(students)
@@ -59,10 +60,9 @@ func GetStudentHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(student)
-
 }
 
-func PostStudentHandler(w http.ResponseWriter, r *http.Request){
+func PostStudentHandler(w http.ResponseWriter, r *http.Request) {
 	var student Student
 	err := json.NewDecoder(r.Body).Decode(&student) // JSON Data
 	if err != nil {
@@ -75,7 +75,7 @@ func PostStudentHandler(w http.ResponseWriter, r *http.Request){
 	w.WriteHeader(http.StatusCreated)
 }
 
-func DeleteStudentHandler(w http.ResponseWriter,r *http.Request){
+func DeleteStudentHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, _ := strconv.Atoi(vars["id"])
 	_, ok := students[id]
@@ -83,7 +83,7 @@ func DeleteStudentHandler(w http.ResponseWriter,r *http.Request){
 		w.WriteHeader(http.StatusNotFound)
 		return
 	}
-	delete(students,id)
+	delete(students, id)
 	w.WriteHeader(http.StatusOK)
 }
 
@@ -99,7 +99,6 @@ func GetStudentListHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(list) // json 포맷으로 변경
 }
 
-
 func main() {
-	http.ListenAndServe(":3000", MakeWebHandler()) 
+	http.ListenAndServe(":3000", MakeWebHandler())
 }
