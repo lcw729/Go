@@ -3,15 +3,17 @@ package main
 import "fmt"
 
 func main() {
-	var n int = 5
-	var nPtr *int
+	var a int
+	var p *int // 포인터 변수 선언
 
-	nPtr = &n
-	fmt.Println("n의 값: ", n)
-	fmt.Println("n의 메모리 주소: ", &n)
-	fmt.Println("nPtr의 값: ", nPtr)
-	fmt.Println("nPtr이 가리키는 값: ", *nPtr)
+	p = &a // a의 메모리 주소를 포인터 변수에 할당
 
-	*nPtr = 30
-	fmt.Println("n의 변경된 값: ", *nPtr)
+	*p = 20
+
+	fmt.Printf("a의 값은 %d입니다.\n", a)
+	fmt.Printf("p의 값 : %p\n", p)
+	fmt.Printf("p가 가리키는 메모리의 값 : %d \n", *p)
+
+	*p = 100
+	fmt.Printf("a의 값은 %d입니다.\n", a)
 }
